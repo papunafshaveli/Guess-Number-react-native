@@ -1,4 +1,11 @@
-import { View, Text, ImageBackground, Pressable } from "react-native";
+import {
+  View,
+  Text,
+  ImageBackground,
+  Pressable,
+  Vibration,
+} from "react-native";
+import { useEffect } from "react";
 import styles from "./styles";
 
 type GameOverScreenProps = {
@@ -12,6 +19,10 @@ const GameOverScreen: React.FC<GameOverScreenProps> = ({
   countRounds,
   myNumber,
 }) => {
+  useEffect(() => {
+    Vibration.vibrate(800);
+  });
+
   return (
     <View style={styles.GameOverContainer}>
       <View style={styles.gameOverTextWrapper}>

@@ -1,4 +1,4 @@
-import { Alert, FlatList, Text, View } from "react-native";
+import { Alert, FlatList, Text, Vibration, View } from "react-native";
 import { useEffect, useRef, useState } from "react";
 
 import { Button } from "@/app/components";
@@ -48,6 +48,7 @@ const GameScreen: React.FC<GameScreenProps> = ({
       Alert.alert("Do not lie", "Please Give The Right hint!", [
         { text: "Okay", style: "destructive" },
       ]);
+      Vibration.vibrate(1000);
       return;
     }
 
@@ -73,6 +74,14 @@ const GameScreen: React.FC<GameScreenProps> = ({
     setCountRounds((prev) => [nextOpponentNumber.toString(), ...prev]);
   };
 
+  const handleLowerBtnPress = () => {
+    nextGuessHandler("lower");
+  };
+
+  const handleHigherBtnPress = () => {
+    nextGuessHandler("higher");
+  };
+
   return (
     <View style={styles.GameScreenContainer}>
       <View style={styles.opponentsGuessTextWrapper}>
@@ -87,8 +96,8 @@ const GameScreen: React.FC<GameScreenProps> = ({
         <Text style={styles.higherLowerText}>Higher or Lower?</Text>
 
         <View style={styles.buttonsWrapper}>
-          <Button onBtnPress={() => nextGuessHandler("lower")} text={"-"} />
-          <Button onBtnPress={() => nextGuessHandler("higher")} text={"+"} />
+          <Button onBtnPress={handleLowerBtnPress} text={"-"} />
+          <Button onBtnPress={handleHigherBtnPress} text={"+"} />
         </View>
       </View>
       <View style={styles.roundsWrapper}>
