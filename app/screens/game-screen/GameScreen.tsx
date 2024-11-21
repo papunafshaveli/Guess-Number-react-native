@@ -1,5 +1,7 @@
+import { Text } from "react-native";
+
 const GameScreen = () => {
-  return <div></div>;
+  return <Text>Game Screen</Text>;
 };
 
 export default GameScreen;

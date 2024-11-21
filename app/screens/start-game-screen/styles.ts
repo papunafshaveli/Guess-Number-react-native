@@ -1,14 +1,46 @@
 import { StyleSheet } from "react-native";
 const styles = StyleSheet.create({
   startGameContainer: {},
-  guessMyNumWrapper: {},
+
+  guessMyNumWrapper: {
+    marginTop: 90,
+    marginHorizontal: 55,
+
+    padding: 20,
+
+    borderWidth: 2,
+    borderColor: "white",
+
+    borderRadius: 2,
+
+    elevation: 5,
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.25,
+    shadowRadius: 7,
+  },
+  guessMyNumText: {
+    color: "white",
+
+    fontSize: 20,
+    fontWeight: "900",
+
+    textAlign: "center",
+  },
+
+  enterNumText: {
+    color: "#ddb52f",
+
+    fontSize: 24,
+    fontWeight: "bold",
+  },
 
   mainContent: {
-    marginTop: 20,
+    marginTop: 35,
     marginHorizontal: 20,
     padding: 20,
 
-    backgroundColor: "#72063c",
+    backgroundColor: "#740938",
 
     borderRadius: 8,
 
@@ -24,13 +56,19 @@ const styles = StyleSheet.create({
 
   input: {
     height: 60,
+    width: 50,
+
     fontSize: 32,
+
     borderBottomColor: "#ddb52f",
     borderBottomWidth: 2,
+
     color: "#ddb52f",
+
     marginVertical: 8,
+
     fontWeight: "bold",
-    width: 50,
+
     textAlign: "center",
   },
   buttonsWrapper: {

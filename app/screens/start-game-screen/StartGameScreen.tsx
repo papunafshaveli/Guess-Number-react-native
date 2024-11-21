@@ -3,9 +3,15 @@ import { TextInput, View, Text, Alert } from "react-native";
 import { Button } from "@/app/components";
 
 import styles from "./styles";
-import { useState } from "react";
+import { Dispatch, SetStateAction, useState } from "react";
 
-const StartGameScreen = () => {
+type StartGameScreenProps = {
+  setSelectedNumber: Dispatch<SetStateAction<number | undefined>>;
+};
+
+const StartGameScreen: React.FC<StartGameScreenProps> = ({
+  setSelectedNumber,
+}) => {
   const [inputNumber, setInputNumber] = useState("");
 
   const handleInputNumberChange = (text: string) => {
@@ -20,7 +26,9 @@ const StartGameScreen = () => {
         "Number has to be a number between 1 and 99.",
         [{ text: "Okay", style: "destructive", onPress: handleResetBtnClick }]
       );
+      return;
     }
+    setSelectedNumber(enteredNumber);
   };
 
   const handleResetBtnClick = () => {
@@ -30,10 +38,11 @@ const StartGameScreen = () => {
   return (
     <View style={styles.startGameContainer}>
       <View style={styles.guessMyNumWrapper}>
-        <Text>Guess My Number</Text>
+        <Text style={styles.guessMyNumText}>Guess My Number</Text>
       </View>
+
       <View style={styles.mainContent}>
-        <Text>Enter a Number</Text>
+        <Text style={styles.enterNumText}>Enter a Number</Text>
         <TextInput
           style={styles.input}
           maxLength={2}

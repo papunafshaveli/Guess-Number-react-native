@@ -1,11 +1,20 @@
 import { ImageBackground } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 
-import { StartGameScreen } from "./screens";
+import { GameScreen, StartGameScreen } from "./screens";
 
 import indexStyles from "./indexStyles";
+import { SetStateAction, useEffect, useState } from "react";
 
 export default function Index() {
+  const [selectedNumber, setSelectedNumber] = useState<number | undefined>();
+
+  let Screen = <StartGameScreen setSelectedNumber={setSelectedNumber} />;
+
+  if (selectedNumber) {
+    Screen = <GameScreen />;
+  }
+
   return (
     // Image background and  linear Gradient
     <LinearGradient
@@ -16,9 +25,9 @@ export default function Index() {
         source={require("../assets/images/dices.jpg")}
         resizeMode="cover"
         style={indexStyles.container}
-        imageStyle={{ opacity: 0.1 }}
+        imageStyle={indexStyles.backgroundImg}
       >
-        <StartGameScreen />
+        {Screen}
       </ImageBackground>
     </LinearGradient>
   );
