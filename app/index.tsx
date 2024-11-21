@@ -1,18 +1,30 @@
-import { ImageBackground } from "react-native";
+import { ImageBackground, SafeAreaView } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 
-import { GameScreen, StartGameScreen } from "./screens";
+import { GameOverScreen, GameScreen, StartGameScreen } from "./screens";
 
 import indexStyles from "./indexStyles";
-import { SetStateAction, useEffect, useState } from "react";
+import { useState } from "react";
 
 export default function Index() {
-  const [selectedNumber, setSelectedNumber] = useState<number | undefined>();
+  const [myNumber, setMyNumber] = useState<number | undefined>();
 
-  let Screen = <StartGameScreen setSelectedNumber={setSelectedNumber} />;
+  const [isGameOver, setIsGameOver] = useState(false);
 
-  if (selectedNumber) {
-    Screen = <GameScreen />;
+  let Screen = <StartGameScreen setMyNumber={setMyNumber} />;
+
+  if (myNumber) {
+    Screen = (
+      <GameScreen
+        myNumber={myNumber}
+        isGameOver={isGameOver}
+        setIsGameOver={setIsGameOver}
+      />
+    );
+  }
+
+  if (isGameOver) {
+    Screen = <GameOverScreen />;
   }
 
   return (
@@ -27,7 +39,7 @@ export default function Index() {
         style={indexStyles.container}
         imageStyle={indexStyles.backgroundImg}
       >
-        {Screen}
+        <SafeAreaView style={indexStyles.container}>{Screen}</SafeAreaView>
       </ImageBackground>
     </LinearGradient>
   );

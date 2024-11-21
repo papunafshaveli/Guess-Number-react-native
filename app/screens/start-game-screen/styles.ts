@@ -1,3 +1,4 @@
+import COLORS from "@/app/constants/colors";
 import { StyleSheet } from "react-native";
 const styles = StyleSheet.create({
   startGameContainer: {},
@@ -29,7 +30,7 @@ const styles = StyleSheet.create({
   },
 
   enterNumText: {
-    color: "#ddb52f",
+    color: COLORS.primaryYellow,
 
     fontSize: 24,
     fontWeight: "bold",
@@ -40,7 +41,7 @@ const styles = StyleSheet.create({
     marginHorizontal: 20,
     padding: 20,
 
-    backgroundColor: "#740938",
+    backgroundColor: COLORS.primaryBackground,
 
     borderRadius: 8,
 
@@ -60,10 +61,10 @@ const styles = StyleSheet.create({
 
     fontSize: 32,
 
-    borderBottomColor: "#ddb52f",
+    borderBottomColor: COLORS.primaryYellow,
     borderBottomWidth: 2,
 
-    color: "#ddb52f",
+    color: COLORS.primaryYellow,
 
     marginVertical: 8,
 

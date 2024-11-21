@@ -6,12 +6,10 @@ import styles from "./styles";
 import { Dispatch, SetStateAction, useState } from "react";
 
 type StartGameScreenProps = {
-  setSelectedNumber: Dispatch<SetStateAction<number | undefined>>;
+  setMyNumber: Dispatch<SetStateAction<number | undefined>>;
 };
 
-const StartGameScreen: React.FC<StartGameScreenProps> = ({
-  setSelectedNumber,
-}) => {
+const StartGameScreen: React.FC<StartGameScreenProps> = ({ setMyNumber }) => {
   const [inputNumber, setInputNumber] = useState("");
 
   const handleInputNumberChange = (text: string) => {
@@ -28,7 +26,7 @@ const StartGameScreen: React.FC<StartGameScreenProps> = ({
       );
       return;
     }
-    setSelectedNumber(enteredNumber);
+    setMyNumber(enteredNumber);
   };
 
   const handleResetBtnClick = () => {
@@ -52,12 +50,12 @@ const StartGameScreen: React.FC<StartGameScreenProps> = ({
         />
 
         <View style={styles.buttonsWrapper}>
-          <Button onBtnPress={handleConfirmBtnClick} text={"Confirm"} />
           <Button
-            onBtnPress={handleResetBtnClick}
-            text={"Reset"}
+            onBtnPress={handleConfirmBtnClick}
+            text={"Confirm"}
             isConfirmedBtn
           />
+          <Button onBtnPress={handleResetBtnClick} text={"Reset"} isResetBtn />
         </View>
       </View>
     </View>
