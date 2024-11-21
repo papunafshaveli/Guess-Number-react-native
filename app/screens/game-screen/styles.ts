@@ -1,7 +1,9 @@
 import COLORS from "@/app/constants/colors";
 import { StyleSheet } from "react-native";
 const styles = StyleSheet.create({
-  GameScreenContainer: {},
+  GameScreenContainer: {
+    flex: 1,
+  },
 
   opponentsGuessTextWrapper: {
     marginTop: 20,
@@ -81,6 +83,37 @@ const styles = StyleSheet.create({
   buttonsWrapper: {
     flexDirection: "row",
     gap: 10,
+  },
+  roundsWrapper: {
+    flex: 1,
+    marginTop: 20,
+    marginHorizontal: 20,
+  },
+  roundItem: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+
+    marginBottom: 10,
+
+    marginHorizontal: 20,
+    padding: 10,
+
+    borderWidth: 2,
+    borderColor: "black",
+
+    borderRadius: 20,
+
+    elevation: 5,
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.25,
+    shadowRadius: 7,
+  },
+  roundText: {
+    color: "black",
+    fontSize: 12,
+    fontWeight: "bold",
+    textAlign: "center",
   },
 });
 

@@ -3,13 +3,13 @@ import styles from "./styles";
 
 type GameOverScreenProps = {
   onRestart: () => void;
-  countRound: number;
+  countRounds: string[];
   myNumber?: number;
 };
 
 const GameOverScreen: React.FC<GameOverScreenProps> = ({
   onRestart,
-  countRound,
+  countRounds,
   myNumber,
 }) => {
   return (
@@ -26,8 +26,8 @@ const GameOverScreen: React.FC<GameOverScreenProps> = ({
       />
       <View style={styles.textsWrapper}>
         <Text style={styles.texts}>
-          Your Phone Needed <Text style={styles.coloredText}>{countRound}</Text>{" "}
-          Rounds
+          Your Phone Needed{" "}
+          <Text style={styles.coloredText}>{countRounds.length}</Text> Rounds
         </Text>
         <Text style={styles.texts}>
           to guess the number <Text style={styles.coloredText}>{myNumber}</Text>{" "}

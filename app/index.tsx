@@ -1,4 +1,4 @@
-import { ImageBackground, SafeAreaView } from "react-native";
+import { ImageBackground, SafeAreaView, StatusBar } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 
 import { GameOverScreen, GameScreen, StartGameScreen } from "./screens";
@@ -11,11 +11,12 @@ export default function Index() {
 
   const [isGameOver, setIsGameOver] = useState(false);
 
-  const [countRound, setCountRound] = useState(0);
+  const [countRounds, setCountRounds] = useState<string[]>([]);
 
   const resetGame = () => {
     setMyNumber(undefined);
     setIsGameOver(false);
+    setCountRounds([]);
   };
 
   let Screen = <StartGameScreen setMyNumber={setMyNumber} />;
@@ -26,14 +27,15 @@ export default function Index() {
         myNumber={myNumber}
         isGameOver={isGameOver}
         setIsGameOver={setIsGameOver}
-        setCountRound={setCountRound}
+        setCountRounds={setCountRounds}
+        countRounds={countRounds}
       />
     );
   } else if (isGameOver) {
     Screen = (
       <GameOverScreen
         onRestart={resetGame}
-        countRound={countRound}
+        countRounds={countRounds}
         myNumber={myNumber}
       />
     );
@@ -45,6 +47,7 @@ export default function Index() {
       colors={["#4e0329", "#ddb52f"]}
       style={indexStyles.container}
     >
+      <StatusBar barStyle="dark-content" />
       <ImageBackground
         source={require("../assets/images/dices.jpg")}
         resizeMode="cover"
