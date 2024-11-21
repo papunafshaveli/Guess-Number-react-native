@@ -1,20 +1,24 @@
-import { Button } from "@/app/components";
 import { Alert, Text, View } from "react-native";
-import styles from "./styles";
 import { useEffect, useRef, useState } from "react";
-import generateRandomNumber from "@/app/helpers/generateRandomNumber";
+
+import { Button } from "@/app/components";
 import MIN_MAX_NUMBERS from "@/app/constants/minMaxNumbers";
+import generateRandomNumber from "@/app/helpers/generateRandomNumber";
+
+import styles from "./styles";
 
 type GameScreenProps = {
   myNumber: number;
   isGameOver: boolean;
   setIsGameOver: React.Dispatch<React.SetStateAction<boolean>>;
+  setCountRound: React.Dispatch<React.SetStateAction<number>>;
 };
 
 const GameScreen: React.FC<GameScreenProps> = ({
   myNumber,
   isGameOver,
   setIsGameOver,
+  setCountRound,
 }) => {
   const tempMinNumber = useRef(MIN_MAX_NUMBERS.min);
   const tempMaxNumber = useRef(MIN_MAX_NUMBERS.max);
@@ -27,13 +31,14 @@ const GameScreen: React.FC<GameScreenProps> = ({
   const [opponentNumber, setOpponentNumber] = useState(opponentInitialNumber);
 
   useEffect(() => {
-    if (opponentNumber === myNumber) {
+    if (opponentNumber === myNumber && !isGameOver) {
       setIsGameOver(true);
     }
-  }, [opponentNumber, myNumber]);
+  }, [opponentNumber, myNumber, isGameOver]);
 
   const nextGuessHandler = (direction: "lower" | "higher") => {
     if (isGameOver) return;
+    setCountRound((prevCountRound) => prevCountRound + 1);
 
     if (
       (direction === "lower" && opponentNumber < myNumber) ||
@@ -51,7 +56,7 @@ const GameScreen: React.FC<GameScreenProps> = ({
       tempMinNumber.current = opponentNumber + 1;
     }
 
-    if (tempMinNumber.current === tempMaxNumber.current) {
+    if (tempMinNumber.current >= tempMaxNumber.current) {
       setOpponentNumber(tempMinNumber.current);
       setIsGameOver(true);
       return;

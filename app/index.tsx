@@ -11,20 +11,32 @@ export default function Index() {
 
   const [isGameOver, setIsGameOver] = useState(false);
 
+  const [countRound, setCountRound] = useState(0);
+
+  const resetGame = () => {
+    setMyNumber(undefined);
+    setIsGameOver(false);
+  };
+
   let Screen = <StartGameScreen setMyNumber={setMyNumber} />;
 
-  if (myNumber) {
+  if (myNumber && !isGameOver) {
     Screen = (
       <GameScreen
         myNumber={myNumber}
         isGameOver={isGameOver}
         setIsGameOver={setIsGameOver}
+        setCountRound={setCountRound}
       />
     );
-  }
-
-  if (isGameOver) {
-    Screen = <GameOverScreen />;
+  } else if (isGameOver) {
+    Screen = (
+      <GameOverScreen
+        onRestart={resetGame}
+        countRound={countRound}
+        myNumber={myNumber}
+      />
+    );
   }
 
   return (
