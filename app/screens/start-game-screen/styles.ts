@@ -1,10 +1,13 @@
 import COLORS from "@/app/constants/colors";
-import { StyleSheet } from "react-native";
+import { Dimensions, StyleSheet } from "react-native";
+
+const deviceHeight = Dimensions.get("window").height;
+
 const styles = StyleSheet.create({
   startGameContainer: {},
 
   guessMyNumWrapper: {
-    marginTop: 90,
+    marginTop: deviceHeight < 450 ? 20 : 90,
     marginHorizontal: 55,
 
     padding: 20,
@@ -37,7 +40,7 @@ const styles = StyleSheet.create({
   },
 
   mainContent: {
-    marginTop: 35,
+    marginTop: deviceHeight < 450 ? 20 : 35,
     marginHorizontal: 20,
     padding: 20,
 

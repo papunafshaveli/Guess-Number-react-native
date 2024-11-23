@@ -1,4 +1,11 @@
-import { Alert, FlatList, Text, Vibration, View } from "react-native";
+import {
+  Alert,
+  FlatList,
+  ScrollView,
+  Text,
+  Vibration,
+  View,
+} from "react-native";
 import { useEffect, useRef, useState } from "react";
 
 import { Button } from "@/app/components";
@@ -83,7 +90,7 @@ const GameScreen: React.FC<GameScreenProps> = ({
   };
 
   return (
-    <View style={styles.GameScreenContainer}>
+    <ScrollView style={styles.GameScreenContainer}>
       <View style={styles.opponentsGuessTextWrapper}>
         <Text style={styles.opponentsGuessText}>Opponent's Guess</Text>
       </View>
@@ -102,6 +109,7 @@ const GameScreen: React.FC<GameScreenProps> = ({
       </View>
       <View style={styles.roundsWrapper}>
         <FlatList
+          scrollEnabled={false}
           data={countRounds}
           keyExtractor={(item) => item}
           renderItem={(itemData) => (
@@ -114,7 +122,7 @@ const GameScreen: React.FC<GameScreenProps> = ({
           )}
         />
       </View>
-    </View>
+    </ScrollView>
   );
 };
 

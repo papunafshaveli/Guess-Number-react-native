@@ -4,6 +4,7 @@ import {
   ImageBackground,
   Pressable,
   Vibration,
+  ScrollView,
 } from "react-native";
 import { useEffect } from "react";
 import styles from "./styles";
@@ -24,7 +25,7 @@ const GameOverScreen: React.FC<GameOverScreenProps> = ({
   });
 
   return (
-    <View style={styles.GameOverContainer}>
+    <ScrollView style={styles.GameOverContainer}>
       <View style={styles.gameOverTextWrapper}>
         <Text style={styles.gameOverText}>Game Over!</Text>
       </View>
@@ -47,7 +48,7 @@ const GameOverScreen: React.FC<GameOverScreenProps> = ({
       <Pressable style={styles.restartBtn} onPress={onRestart}>
         <Text style={styles.restartText}>Start New game</Text>
       </Pressable>
-    </View>
+    </ScrollView>
   );
 };
 

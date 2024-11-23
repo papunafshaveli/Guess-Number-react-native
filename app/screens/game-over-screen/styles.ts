@@ -1,10 +1,13 @@
 import COLORS from "@/app/constants/colors";
-import { StyleSheet } from "react-native";
+import { StyleSheet, Dimensions } from "react-native";
+
+const mobileWidth = Dimensions.get("window").width;
+const deviceHeight = Dimensions.get("window").height;
 
 const styles = StyleSheet.create({
   GameOverContainer: {},
   gameOverTextWrapper: {
-    marginTop: 100,
+    marginTop: deviceHeight < 450 ? 30 : 70,
     marginHorizontal: 60,
 
     padding: 10,
@@ -27,8 +30,8 @@ const styles = StyleSheet.create({
     textAlign: "center",
   },
   imageBackgroundWrapper: {
-    width: 200,
-    height: 200,
+    width: mobileWidth || deviceHeight < 450 ? 200 : 300,
+    height: mobileWidth || deviceHeight < 450 ? 200 : 300,
 
     alignSelf: "center",
 
@@ -69,6 +72,7 @@ const styles = StyleSheet.create({
   },
   restartBtn: {
     marginTop: 30,
+    marginBottom: 30,
     width: 200,
     padding: 10,
 

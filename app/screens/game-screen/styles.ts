@@ -1,5 +1,10 @@
 import COLORS from "@/app/constants/colors";
-import { StyleSheet } from "react-native";
+import { StyleSheet, Dimensions } from "react-native";
+
+// media dimensions
+const deviceWidth = Dimensions.get("window").width;
+const deviceHeight = Dimensions.get("window").height;
+
 const styles = StyleSheet.create({
   GameScreenContainer: {
     flex: 1,
@@ -34,9 +39,9 @@ const styles = StyleSheet.create({
     borderWidth: 3,
     borderColor: COLORS.primaryYellow,
 
-    marginTop: 25,
-    marginHorizontal: 20,
-    padding: 30,
+    marginTop: deviceHeight < 450 ? 10 : 25,
+    marginHorizontal: deviceWidth < 450 ? 15 : 20,
+    padding: deviceWidth || deviceHeight < 450 ? 20 : 30,
 
     borderRadius: 8,
 
@@ -49,13 +54,13 @@ const styles = StyleSheet.create({
   opponentsGuessNum: {
     color: COLORS.primaryYellow,
 
-    fontSize: 32,
+    fontSize: deviceWidth < 450 ? 24 : 32,
     fontWeight: "bold",
     textAlign: "center",
   },
 
   higherLowerWrapper: {
-    marginTop: 40,
+    marginTop: deviceHeight < 450 ? 10 : 40,
     marginHorizontal: 20,
     padding: 25,
 
