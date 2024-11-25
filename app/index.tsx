@@ -1,10 +1,11 @@
-import { ImageBackground, SafeAreaView, StatusBar } from "react-native";
+import { ImageBackground, SafeAreaView } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 
 import { GameOverScreen, GameScreen, StartGameScreen } from "./screens";
 
 import indexStyles from "./indexStyles";
 import { useState } from "react";
+import { StatusBar } from "expo-status-bar";
 
 export default function Index() {
   const [myNumber, setMyNumber] = useState<number | undefined>();
@@ -42,20 +43,22 @@ export default function Index() {
   }
 
   return (
-    // Image background and  linear Gradient
-    <LinearGradient
-      colors={["#4e0329", "#ddb52f"]}
-      style={indexStyles.container}
-    >
-      <StatusBar barStyle="dark-content" />
-      <ImageBackground
-        source={require("../assets/images/dices.jpg")}
-        resizeMode="cover"
+    <>
+      <StatusBar style="dark" />
+
+      <LinearGradient
+        colors={["#4e0329", "#ddb52f"]}
         style={indexStyles.container}
-        imageStyle={indexStyles.backgroundImg}
       >
-        <SafeAreaView style={indexStyles.container}>{Screen}</SafeAreaView>
-      </ImageBackground>
-    </LinearGradient>
+        <ImageBackground
+          source={require("../assets/images/dices.jpg")}
+          resizeMode="cover"
+          style={indexStyles.container}
+          imageStyle={indexStyles.backgroundImg}
+        >
+          <SafeAreaView style={indexStyles.container}>{Screen}</SafeAreaView>
+        </ImageBackground>
+      </LinearGradient>
+    </>
   );
 }

@@ -1,4 +1,11 @@
-import { TextInput, View, Text, Alert } from "react-native";
+import {
+  TextInput,
+  View,
+  Text,
+  Alert,
+  KeyboardAvoidingView,
+  ScrollView,
+} from "react-native";
 
 import { Button } from "@/app/components";
 
@@ -34,31 +41,42 @@ const StartGameScreen: React.FC<StartGameScreenProps> = ({ setMyNumber }) => {
   };
 
   return (
-    <View style={styles.startGameContainer}>
-      <View style={styles.guessMyNumWrapper}>
-        <Text style={styles.guessMyNumText}>Guess My Number</Text>
-      </View>
+    <ScrollView style={styles.startGameContainer}>
+      <KeyboardAvoidingView
+        style={styles.startGameContainer}
+        behavior="position"
+      >
+        <View style={styles.startGameContainer}>
+          <View style={styles.guessMyNumWrapper}>
+            <Text style={styles.guessMyNumText}>Guess My Number</Text>
+          </View>
 
-      <View style={styles.mainContent}>
-        <Text style={styles.enterNumText}>Enter a Number</Text>
-        <TextInput
-          style={styles.input}
-          maxLength={2}
-          keyboardType="number-pad"
-          value={inputNumber}
-          onChangeText={handleInputNumberChange}
-        />
+          <View style={styles.mainContent}>
+            <Text style={styles.enterNumText}>Enter a Number</Text>
+            <TextInput
+              style={styles.input}
+              maxLength={2}
+              keyboardType="number-pad"
+              value={inputNumber}
+              onChangeText={handleInputNumberChange}
+            />
 
-        <View style={styles.buttonsWrapper}>
-          <Button
-            onBtnPress={handleConfirmBtnClick}
-            text={"Confirm"}
-            isConfirmedBtn
-          />
-          <Button onBtnPress={handleResetBtnClick} text={"Reset"} isResetBtn />
+            <View style={styles.buttonsWrapper}>
+              <Button
+                onBtnPress={handleConfirmBtnClick}
+                text={"Confirm"}
+                isConfirmedBtn
+              />
+              <Button
+                onBtnPress={handleResetBtnClick}
+                text={"Reset"}
+                isResetBtn
+              />
+            </View>
+          </View>
         </View>
-      </View>
-    </View>
+      </KeyboardAvoidingView>
+    </ScrollView>
   );
 };
 

@@ -4,7 +4,9 @@ import { Dimensions, StyleSheet } from "react-native";
 const deviceHeight = Dimensions.get("window").height;
 
 const styles = StyleSheet.create({
-  startGameContainer: {},
+  startGameContainer: {
+    flex: 1,
+  },
 
   guessMyNumWrapper: {
     marginTop: deviceHeight < 450 ? 20 : 90,
